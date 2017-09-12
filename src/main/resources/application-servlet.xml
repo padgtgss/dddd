@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-4.0.xsd
+   		http://www.springframework.org/schema/mvc
+   		http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd">
+
+    <context:component-scan base-package="com"/>
+
+    <bean id="jacksonObjectMapper" class="com.util.json.JacksonObjectMapper"/>
+    <mvc:annotation-driven conversion-service="conversionService">
+        <mvc:message-converters>
+            <bean class="com.util.json.JacksonObjectMapperHttpMessageConvert">
+                <property name="objectMapper" ref="jacksonObjectMapper" />
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
+    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <property name="converters">
+            <set>
+                <bean class="com.util.converters.StringToDateConversion"/>
+                <bean class="com.util.converters.StringToIntegerConversion"/>
+                <bean class="com.util.converters.StringToLongConversion"/>
+                <bean class="com.util.converters.StringTrimToString"/>
+            </set>
+        </property>
+    </bean>
+
+
+    <!--自定义异常处理-->
+    <bean id="serverExceptionResolver" class="com.util.exception.ServerExceptionResolver">
+        <property name="objectMapper" ref="jacksonObjectMapper"/>
+        <property name="contentType" value="application/json;charset=UTF-8"/>
+    </bean>
+    <bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver"/>
+
+    <!-- jsp页面视图 -->
+     <bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/pager/" />
+        <property name="suffix" value=".jsp" />
+        <property name="order" value="1" />
+    </bean>
+</beans>

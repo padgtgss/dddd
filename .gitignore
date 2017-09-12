@@ -1,0 +1,14 @@
+.svn
+*.iml
+.metadata
+target
+.project
+.classpath
+.settings
+bin
+.idea
+test-output
+*/log/*
+*.log*
+*rebel.xml*
+temp/*
