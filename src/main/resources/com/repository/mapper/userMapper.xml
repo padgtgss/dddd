@@ -7,16 +7,24 @@
         <id column="id" property="id" jdbcType="INTEGER"/>
         <result column="username" property="username" jdbcType="VARCHAR"/>
         <result column="password" property="password" jdbcType="VARCHAR"/>
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="available" property="available" jdbcType="VARCHAR" typeHandler="com.repository.entity.common.UniversalEnumHandler" />
         </resultMap>
 
 
     <sql id="Base_Column_List">
-        id, username,password
+        id, username,password,update_time,create_time,available
     </sql>
 
     <select id="list" resultMap="baseResultMap">
         select
         <include refid="Base_Column_List" />
-        from yp_user
+        from user
     </select>
+
+    <insert id="insert" parameterType="com.repository.entity.User">
+        insert INTO USER  (id,username,password,update_time,create_time,available)
+        VALUES (#{id},#{username},#{password},#{updateTime},#{createTime},#{available})
+    </insert>
 </mapper>

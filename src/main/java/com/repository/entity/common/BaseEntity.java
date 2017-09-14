@@ -1,4 +1,4 @@
-package com.repository.entity;
+package com.repository.entity.common;
 
 import java.util.Date;
 
@@ -10,25 +10,22 @@ import java.util.Date;
 public class BaseEntity implements java.io.Serializable {
     private static final long serialVersionUID = 6786042125926490613L;
 
-    private int id;
+    protected String id;
 
-    private Date createTime;
+    protected Date createTime;
 
-    private Date updateTime;
+    protected Date updateTime;
 
-    private AvailableEnum available;
-
-     enum AvailableEnum {
-        AVAILABLE,
-        UNAVAILABLE;
-    }
+    protected AvailableEnum available;
 
 
-    public int getId() {
+
+
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 

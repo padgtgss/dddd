@@ -1,11 +1,15 @@
 package com.controller;
 
+import com.repository.entity.User;
+import com.repository.entity.common.AvailableEnum;
 import com.service.UserService;
+import com.util.UUIDUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import java.util.Date;
 
 /**
  * @Description: UserController
@@ -24,5 +28,17 @@ public class UserController {
         return userService.list(pageSize, pageIndex);
     }
 
+    @RequestMapping("/insert")
+    @ResponseBody
+    public void add() {
+        User user = new User();
+        user.setPassword("sdfsdf");
 
+        user.setUsername("234sdf");
+        user.setAvailable(AvailableEnum.AVAILABLE);
+        user.setCreateTime(new Date());
+        user.setUpdateTime(new Date());
+        user.setId(UUIDUtils.get());
+        userService.insertUser(user);
+    }
 }

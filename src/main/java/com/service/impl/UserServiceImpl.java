@@ -25,4 +25,9 @@ public class UserServiceImpl implements UserService {
         return (Page<User>) userMapper.list();
 
     }
+
+    @Override
+    public void insertUser(User user) {
+        userMapper.insert(user);
+    }
 }

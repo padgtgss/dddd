@@ -1,5 +1,7 @@
 package com.repository.entity;
 
+import com.repository.entity.common.BaseEntity;
+
 /**
  * @Description: User
  * @Author: lin.shi

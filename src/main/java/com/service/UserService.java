@@ -11,4 +11,6 @@ import com.repository.entity.User;
 public interface UserService {
 
     Page<User> list(int pageSize, int pageIndex);
+
+    void insertUser(User user);
 }

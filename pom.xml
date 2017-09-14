@@ -18,7 +18,7 @@
         <log4j.level>DEBUG</log4j.level>
         <jdbc.database>MYSQL</jdbc.database>
         <jdbc.driverClass>com.mysql.jdbc.Driver</jdbc.driverClass>
-        <jdbc.url>jdbc:mysql://localhost:3306/db_customer_yp?characterEncoding=utf8</jdbc.url>
+        <jdbc.url>jdbc:mysql://localhost:3306/test?characterEncoding=utf8</jdbc.url>
         <jdbc.username>root</jdbc.username>
         <jdbc.password>123456</jdbc.password>
       </properties>
@@ -32,6 +32,7 @@
     <jackson.version>1.9.11</jackson.version>
     <aspectj.version>1.6.11</aspectj.version>
     <mysql.version>5.1.13</mysql.version>
+    <guava.version>18.0</guava.version>
   </properties>
 
 
@@ -81,13 +82,14 @@
     <dependency>
       <groupId>commons-beanutils</groupId>
       <artifactId>commons-beanutils</artifactId>
-      <version>1.8.3</version>
+      <version>1.9.3</version>
     </dependency>
     <dependency>
-      <groupId>commons-lang</groupId>
-      <artifactId>commons-lang</artifactId>
-      <version>2.5</version>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>3.6</version>
     </dependency>
+
     <dependency>
       <groupId>commons-codec</groupId>
       <artifactId>commons-codec</artifactId>
@@ -126,10 +128,11 @@
       <version>1.0.3</version>
     </dependency>
     <dependency>
-      <groupId>com.jolbox</groupId>
-      <artifactId>bonecp</artifactId>
-      <version>0.8.0.RELEASE</version>
+      <groupId>com.github.pagehelper</groupId>
+      <artifactId>pagehelper</artifactId>
+      <version>4.1.6</version>
     </dependency>
+
     <!-- +++|spring|+++ start -->
     <dependency>
       <groupId>org.springframework</groupId>
@@ -232,14 +235,10 @@
     <dependency>
       <groupId>com.google.guava</groupId>
       <artifactId>guava</artifactId>
-      <version>18.0</version>
+      <version>${guava.version}</version>
     </dependency>
 
-    <dependency>
-      <groupId>com.github.pagehelper</groupId>
-      <artifactId>pagehelper</artifactId>
-      <version>4.1.6</version>
-    </dependency>
+
 
 
     <!-- +++|Servlet|+++ -->

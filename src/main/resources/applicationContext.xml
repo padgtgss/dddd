@@ -37,6 +37,24 @@
     <!-- 4.采用@Transaction注解方式使用事务 -->
     <tx:annotation-driven transaction-manager="txManager"/>
 
+    <!-- ** ============================= Configuration transaction  ============================ ** -->
+    <tx:annotation-driven transaction-manager="txManager"/>
+    <tx:advice id="txAdvice" transaction-manager="txManager">
+        <tx:attributes>
+            <tx:method name="add*" propagation="REQUIRED" read-only="false"/>
+            <tx:method name="insert*" propagation="REQUIRED" read-only="false"/>
+            <tx:method name="save*" propagation="REQUIRED" read-only="false"/>
+            <tx:method name="delete*" propagation="REQUIRED" read-only="false"/>
+            <tx:method name="update*" propagation="REQUIRED" read-only="false"/>
+            <tx:method name="*" propagation="SUPPORTS" read-only="true"/>
+        </tx:attributes>
+    </tx:advice>
+    <aop:config>
+        <aop:advisor pointcut="execution(* com.service..*.*(..))
+                            || execution(* com..*.service..*.*(..))" advice-ref="txAdvice"/>
+    </aop:config>
+
+
 
     <import resource="application-jdbc.xml" />
 </beans>
