@@ -28,7 +28,6 @@
         <property name="basePackage">
             <value>com.repository.mapper.**;</value>
         </property>
-        <!--<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />-->
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
 

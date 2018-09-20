@@ -20,11 +20,11 @@
     <select id="list" resultMap="baseResultMap">
         select
         <include refid="Base_Column_List" />
-        from user
+        from t_user
     </select>
 
     <insert id="insert" parameterType="com.repository.entity.User">
-        insert INTO USER  (id,username,password,update_time,create_time,available)
+        insert INTO t_user  (id,username,password,update_time,create_time,available)
         VALUES (#{id},#{username},#{password},#{updateTime},#{createTime},#{available})
     </insert>
 </mapper>
