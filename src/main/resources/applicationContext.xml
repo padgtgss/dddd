@@ -38,7 +38,6 @@
     <tx:annotation-driven transaction-manager="txManager"/>
 
     <!-- ** ============================= Configuration transaction  ============================ ** -->
-    <tx:annotation-driven transaction-manager="txManager"/>
     <tx:advice id="txAdvice" transaction-manager="txManager">
         <tx:attributes>
             <tx:method name="add*" propagation="REQUIRED" read-only="false"/>

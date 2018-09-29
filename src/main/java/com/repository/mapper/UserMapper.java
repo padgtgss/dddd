@@ -1,6 +1,7 @@
 package com.repository.mapper;
 
 import com.repository.entity.User;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -12,6 +13,8 @@ import java.util.List;
 public interface UserMapper {
 
     List<User> list();
+
+    User get(@Param("id") String id);
 
     void insert(User user);
 }

@@ -20,7 +20,7 @@ import java.nio.charset.Charset;
  */
 public class JacksonObjectMapperHttpMessageConvert extends AbstractHttpMessageConverter<Object> {
 
-    public static final Charset DEFAULT_CHARSET = Charset.forName("UTF-8");
+    private static final Charset DEFAULT_CHARSET = Charset.forName("UTF-8");
 
     private ObjectMapper objectMapper;
 
@@ -58,7 +58,7 @@ public class JacksonObjectMapperHttpMessageConvert extends AbstractHttpMessageCo
         try {
             return this.objectMapper.readValue(inputMessage.getBody(), clazz);
         } catch (JsonProcessingException ex) {
-            throw new HttpMessageNotReadableException("Could not read JSON: " + ex.getMessage(), ex);
+            throw new HttpMessageNotReadableException("Could not read JSON: " + ex.getMessage(), ex, inputMessage);
         }
     }
 

@@ -4,9 +4,10 @@ import com.repository.entity.User;
 import com.repository.entity.common.AvailableEnum;
 import com.service.UserService;
 import com.util.UUIDUtils;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.Date;
@@ -16,7 +17,7 @@ import java.util.Date;
  * @Author: lin.shi
  * @CreateTime: 2017-09-12 17:53
  */
-@Controller
+@RestController
 @RequestMapping("/user")
 public class UserController {
     @Resource
@@ -41,4 +42,11 @@ public class UserController {
         user.setId(UUIDUtils.get());
         userService.insertUser(user);
     }
+
+    @RequestMapping("/{id}")
+    @ResponseBody
+    public User get(@PathVariable(value = "id") String id) {
+        return userService.get(id);
+    }
+
 }

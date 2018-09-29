@@ -13,4 +13,8 @@ public interface UserService {
     Page<User> list(int pageSize, int pageIndex);
 
     void insertUser(User user);
+
+
+    User get(String id);
 }
+
